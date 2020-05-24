@@ -13,6 +13,16 @@ class MapViewController: UIViewController {
     
     var mapView: MKMapView!
     
+    struct mapSegment {
+        let name: String
+        let mapType: MKMapType
+    }
+    let mapSegments = [
+        mapSegment( name: "Map", mapType: .standard ),
+        mapSegment( name: "Hybrid", mapType: .hybrid ),
+        mapSegment( name: "Satellite", mapType: .satellite ),
+    ]
+
     override func loadView() {
         
         mapView = MKMapView()
@@ -43,7 +53,7 @@ class MapViewController: UIViewController {
     }
     private func buildSegmentedControl() -> UISegmentedControl {
         
-        let segmentedControl = UISegmentedControl( items: ["Standard", "Hybrid", "Satellite" ])
+        let segmentedControl = UISegmentedControl( items: mapSegments.map { $0.name })
         segmentedControl.backgroundColor = .systemBackground
         segmentedControl.selectedSegmentIndex = 0
         
@@ -68,12 +78,13 @@ class MapViewController: UIViewController {
     // MARK: - React to user action
     
     @objc func mapTypeChanged( _ segControl: UISegmentedControl ) {
-     
-        switch segControl.selectedSegmentIndex {
-            case 0: mapView.mapType = .standard
-            case 1: mapView.mapType = .hybrid
-            case 2: mapView.mapType = .satellite
-            default: break
+
+        let segmentIndex = segControl.selectedSegmentIndex
+        
+        guard segmentIndex >= 0 && segmentIndex < mapSegments.count else {
+            return
         }
+        
+        mapView.mapType = mapSegments[ segmentIndex ].mapType
     }
 }
