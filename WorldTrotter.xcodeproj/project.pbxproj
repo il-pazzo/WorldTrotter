@@ -15,6 +15,7 @@
 		BB4C97692479B1E4009A580F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4C97672479B1E4009A580F /* LaunchScreen.storyboard */; };
 		BB4C97742479B1E5009A580F /* WorldTrotterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C97732479B1E5009A580F /* WorldTrotterTests.swift */; };
 		BB4C977F2479B1E5009A580F /* WorldTrotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C977E2479B1E5009A580F /* WorldTrotterUITests.swift */; };
+		BB4C978D247A0EF6009A580F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C978C247A0EF6009A580F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BB4C977A2479B1E5009A580F /* WorldTrotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldTrotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4C977E2479B1E5009A580F /* WorldTrotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTrotterUITests.swift; sourceTree = "<group>"; };
 		BB4C97802479B1E5009A580F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB4C978C247A0EF6009A580F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				BB4C975C2479B1E3009A580F /* AppDelegate.swift */,
 				BB4C975E2479B1E3009A580F /* SceneDelegate.swift */,
 				BB4C97602479B1E3009A580F /* TemperatureConverterViewController.swift */,
+				BB4C978C247A0EF6009A580F /* MapViewController.swift */,
 				BB4C97622479B1E3009A580F /* Main.storyboard */,
 				BB4C97652479B1E4009A580F /* Assets.xcassets */,
 				BB4C97672479B1E4009A580F /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 				BB4C97612479B1E3009A580F /* TemperatureConverterViewController.swift in Sources */,
 				BB4C975D2479B1E3009A580F /* AppDelegate.swift in Sources */,
 				BB4C975F2479B1E3009A580F /* SceneDelegate.swift in Sources */,
+				BB4C978D247A0EF6009A580F /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

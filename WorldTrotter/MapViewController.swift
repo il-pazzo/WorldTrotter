@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  WorldTrotter
 //
 //  Created by Glenn Cole on 5/23/20.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class TemperatureConverterViewController: UIViewController {
-
+class MapViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print( "TemperatureConverterViewController loaded its view" )
+        print( "MapViewController loaded its view" )
     }
 }
-
