@@ -78,3 +78,18 @@ class TemperatureConverterViewController: UIViewController {
     }
 }
 
+extension TemperatureConverterViewController: UITextFieldDelegate {
+    
+    // disallow entering more than one decimal point
+    //
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String ) -> Bool {
+
+        let existingTextHasDecimal = textField.text?.range(of: ".")
+        let replacementTextHasDecimal = string.range(of: ".")
+        
+        return existingTextHasDecimal == nil
+        || replacementTextHasDecimal == nil
+    }
+}

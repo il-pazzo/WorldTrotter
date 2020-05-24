@@ -22,6 +22,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="fahrenheitFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="9zD-gE-f03"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ert-C7-Maw"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="degrees Fahrenheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C52-uZ-8nh">
