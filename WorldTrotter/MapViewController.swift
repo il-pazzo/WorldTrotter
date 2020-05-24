@@ -14,13 +14,14 @@ class MapViewController: UIViewController {
     var mapView: MKMapView!
     
     struct mapSegment {
-        let name: String
         let mapType: MKMapType
+        let name: String
+        let comment: String
     }
     let mapSegments = [
-        mapSegment( name: "Map", mapType: .standard ),
-        mapSegment( name: "Hybrid", mapType: .hybrid ),
-        mapSegment( name: "Satellite", mapType: .satellite ),
+        mapSegment( mapType: .standard, name: "Standard", comment: "Standard map view" ),
+        mapSegment( mapType: .hybrid, name: "Hybrid", comment: "Hybrid map view" ),
+        mapSegment( mapType: .satellite, name: "Satellite", comment: "Satellite map view" ),
     ]
 
     override func loadView() {
@@ -53,7 +54,10 @@ class MapViewController: UIViewController {
     }
     private func buildSegmentedControl() -> UISegmentedControl {
         
-        let segmentedControl = UISegmentedControl( items: mapSegments.map { $0.name })
+        // Note that using NSLocalizedString like this causes genstrings to throw an error
+        let segmentedControl = UISegmentedControl(
+            items: mapSegments.map { NSLocalizedString( $0.name, comment: $0.comment ) }
+        )
         segmentedControl.backgroundColor = .systemBackground
         segmentedControl.selectedSegmentIndex = 0
         
