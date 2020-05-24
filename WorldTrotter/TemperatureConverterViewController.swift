@@ -49,12 +49,14 @@ class TemperatureConverterViewController: UIViewController {
     
     @IBAction func fahrenheitFieldChanged( _ textField: UITextField ) {
         
-        if let text = textField.text, let value = Double(text) {
-            fahrenheitValue = Measurement( value: value, unit: .fahrenheit )
-        }
+        guard let text = textField.text,
+            let value = Double(text)
         else {
             fahrenheitValue = nil
+            return
         }
+
+        fahrenheitValue = Measurement( value: value, unit: .fahrenheit )
     }
     
     @IBAction func dismissKeyboard( _ sender: UITapGestureRecognizer ) {
@@ -63,14 +65,16 @@ class TemperatureConverterViewController: UIViewController {
     }
     
     func updateCelsiusLabel() {
-        if let celsiusValue = celsiusValue {
-            celsiusLabel.text = celsiusFormatter.string( from:
-                NSNumber( value: celsiusValue.value )
-            )
-        }
+        
+        guard let celsiusValue = celsiusValue
         else {
             celsiusLabel.text = NO_CELSIUS_VALUE
+            return
         }
+
+        celsiusLabel.text = celsiusFormatter.string( from:
+            NSNumber( value: celsiusValue.value )
+        )
     }
 }
 
