@@ -30,7 +30,7 @@ class TemperatureConverterViewController: UIViewController {
         }
     }
     
-    let celsiusFormatter: NumberFormatter = {
+    let temperatureFormatter: NumberFormatter = {
         let fmt = NumberFormatter()
         fmt.numberStyle = .decimal
         fmt.minimumFractionDigits = 0
@@ -50,13 +50,13 @@ class TemperatureConverterViewController: UIViewController {
     @IBAction func fahrenheitFieldChanged( _ textField: UITextField ) {
         
         guard let text = textField.text,
-            let value = Double(text)
+            let number = temperatureFormatter.number(from: text)
         else {
             fahrenheitValue = nil
             return
         }
 
-        fahrenheitValue = Measurement( value: value, unit: .fahrenheit )
+        fahrenheitValue = Measurement( value: number.doubleValue, unit: .fahrenheit )
     }
     
     @IBAction func dismissKeyboard( _ sender: UITapGestureRecognizer ) {
@@ -72,7 +72,7 @@ class TemperatureConverterViewController: UIViewController {
             return
         }
 
-        celsiusLabel.text = celsiusFormatter.string( from:
+        celsiusLabel.text = temperatureFormatter.string( from:
             NSNumber( value: celsiusValue.value )
         )
     }
@@ -80,14 +80,17 @@ class TemperatureConverterViewController: UIViewController {
 
 extension TemperatureConverterViewController: UITextFieldDelegate {
     
-    // disallow entering more than one decimal point
+    // disallow entering more than one "decimal point"
     //
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String ) -> Bool {
 
-        let existingTextHasDecimal = textField.text?.range(of: ".")
-        let replacementTextHasDecimal = string.range(of: ".")
+        let locale = Locale.current
+        let decimalCharacter = locale.decimalSeparator ?? "."
+        
+        let existingTextHasDecimal = textField.text?.range(of: decimalCharacter)
+        let replacementTextHasDecimal = string.range(of: decimalCharacter)
         
         return existingTextHasDecimal == nil
         || replacementTextHasDecimal == nil
